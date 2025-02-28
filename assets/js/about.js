@@ -30,12 +30,15 @@ function handleBackgroundImage() {
     const newDiv = document.createElement('div');
     newDiv.classList.add('image-values');
 
-    if (window.innerWidth < 1050) {
+        if (!document.querySelector('.image-values img')  && (window.innerWidth < 1050) ){
+            aboutValues.style.backgroundImage = 'none';
+            propositionsBg.parentNode.insertBefore(newDiv, propositionsBg);
+            newDiv.innerHTML = '<img src="../assets/images/about-md.webp" alt="valores corporativos ">';
+        } else {
+            propositionsBg.style.backgroundImage = 'url(../assets/images/about-values.png)';
+            newDiv.remove();
+        }
 
-        aboutValues.style.backgroundImage = 'none';
-        propositionsBg.parentNode.insertBefore(newDiv, propositionsBg);
-        newDiv.innerHTML = '<img src="../assets/images/about-md.webp" alt="valores corporativos ">';
-    }
 }
 
 window.addEventListener('resize', handleBackgroundImage);

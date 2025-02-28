@@ -176,7 +176,7 @@
 }
 
 /* Media Queries */
-@media (min-width: 300px) and (max-width: 767px) {
+@media (min-width: 300px) and (max-width: 1050px) {
     .about-values {
         flex-wrap: wrap;
 

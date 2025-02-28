@@ -323,7 +323,7 @@ function openModal(planType) {
             <table>
                 <tr><td>Acceso a reservas <span style="color: green;">✔</span></td></tr>
                 <tr><td>Acceso a domicilios <span style="color: green;">✔</span></td></tr>
-                <tr><td>Solo 10 domicilios por més <span style="color: green;">✖</span></td></tr>
+                <tr><td>Solo 10 domicilios por més <span style="color: red;">✖</span></td></tr>
                 <tr><td>Solo 8 reservas por més <span style="color: red;">✖</span></td></tr>
                 <tr><td>No incluye restaurantes personalizados <span style="color: red;">✖</span></td></tr>
             </table>
