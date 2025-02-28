@@ -54,6 +54,8 @@ const loadComponent = async (id, file) => {
                 } else {
                     const miRestauranteLink = document.getElementById("miRestaurante");
                     const sedesLink = document.getElementById("misSedes");
+                    const reservasLink = document.getElementById("Reservas");
+                    reservasLink.style.display = 'none';
                     miRestauranteLink.style.display = 'none';
                     sedesLink.style.display = 'none';
                 }

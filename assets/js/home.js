@@ -265,9 +265,11 @@ function openModal(planType) {
     const modalTitle = document.getElementById("modal-title");
     const modalDescription = document.getElementById("modal-description");
     const purchaseButton = document.getElementById("purchase-button");
+    const termsContainer = document.getElementById("terms-container");
     
     if (planType === "basic" || planType === "personal-basic") {
         purchaseButton.style.display = "none";
+        termsContainer.style.display = "none";
     } else {
         const userToken = localStorage.getItem("token");
         if (userToken) {
@@ -275,8 +277,8 @@ function openModal(planType) {
         } else {
             purchaseButton.innerHTML = '<a href="./login.html">Inicia sesión para comprar</a>';
             purchaseButton.style.display = "block";
-            // purchaseButton.style.display = "none";
         }
+        termsContainer.style.display = "block";
     }
     
     if (planType === "basic") {
