@@ -30,19 +30,19 @@
                 <h2>Crear Sede</h2>
                 <div class="input-group">
                     <label for="direccionSede">Dirección Sede</label>
-                    <input type="text" id="direccionSede" name="direccionSede" required>
+                    <input type="text" id="direccionSede" name="direccionSede" required pattern=".{1,100}" title="Máximo 100 caracteres">
                 </div>
                 <div class="input-group">
                     <label for="telefonoSede">Teléfono Sede</label>
-                    <input type="text" id="telefonoSede" name="telefonoSede" required>
+                    <input type="text" id="telefonoSede" name="telefonoSede" required pattern=".{1,15}" title="Máximo 15 caracteres">
                 </div>
                 <div class="input-group">
                     <label for="mesasDisponibles">Mesas Disponibles Para Reservas</label>
-                    <input type="number" id="mesasDisponibles" name="mesasDisponibles" required>
+                    <input type="number" id="mesasDisponibles" name="mesasDisponibles" required min="1">
                 </div>
                 <div class="input-group">
                     <label for="cantidadDePersonasPorMesa">Cantidad de Personas por Mesa</label>
-                    <input type="number" id="cantidadDePersonasPorMesa" name="cantidadDePersonasPorMesa" required>
+                    <input type="number" id="cantidadDePersonasPorMesa" name="cantidadDePersonasPorMesa" required min="1">
                 </div>
                 <div class="input-group" onclick="openModal()">
                     <label class="horario" for="horario">Horario <img src="../assets/images/edit.png" alt="Editar Horario"></label>
@@ -67,19 +67,19 @@
                 <button type="button" id="editarSedeBtn">Cargar Sede</button>
                 <div class="input-group">
                     <label for="direccionSede1">Dirección Sede</label>
-                    <input type="text" id="direccionSede1" name="direccionSede1" required>
+                    <input type="text" id="direccionSede1" name="direccionSede1" required pattern=".{1,100}" title="Máximo 100 caracteres">
                 </div>
                 <div class="input-group">
                     <label for="telefonoSede1">Teléfono Sede</label>
-                    <input type="text" id="telefonoSede1" name="telefonoSede1" required>
+                    <input type="text" id="telefonoSede1" name="telefonoSede1" required pattern=".{1,15}" title="Máximo 15 caracteres">
                 </div>
                 <div class="input-group">
                     <label for="mesasDisponibles1">Mesas Disponibles</label>
-                    <input type="number" id="mesasDisponibles1" name="mesasDisponibles1" required>
+                    <input type="number" id="mesasDisponibles1" name="mesasDisponibles1" required min="1">
                 </div>
                 <div class="input-group">
                     <label for="cantidadDePersonasPorMesa1">Cantidad de Personas por Mesa</label>
-                    <input type="number" id="cantidadDePersonasPorMesa1" name="cantidadDePersonasPorMesa1" required>
+                    <input type="number" id="cantidadDePersonasPorMesa1" name="cantidadDePersonasPorMesa1" required min="1">
                 </div>
                 <div class="input-group" onclick="openModal()">
                     <label class="horario1" for="horario1">Horario <img src="../assets/images/edit.png" alt="Editar Horario"></label>

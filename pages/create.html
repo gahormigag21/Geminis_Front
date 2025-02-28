@@ -33,13 +33,14 @@
 
                     <!-- Campos para usuario -->
                     <div id="usuario-fields">
-                        <input type="number" name="documento" placeholder="Documento" required>
-                        <input type="text" name="nombres" placeholder="Nombres" required>
-                        <input type="text" name="apellido" placeholder="Apellido" required>
-                        <input type="email" name="correo" placeholder="Correo" required>
-                        <input type="text" name="telefono" placeholder="Teléfono" required>
+                        <input type="number" name="documento" placeholder="Documento" required minlength="7">
+                        <input type="text" name="nombres" placeholder="Nombres" required pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ\s]+">
+                        <input type="text" name="apellido" placeholder="Apellidos" required pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ\s]+">
+                        <input type="email" name="correo" placeholder="Correo" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+                        <input type="text" name="telefono" placeholder="Teléfono" required pattern="\d{7,15}">
                         <input type="text" name="direccion" placeholder="Dirección" required>
-                        <input type="password" name="contrasena" placeholder="Contraseña" required>
+                        <input type="password" name="contrasena" id="contrasena" placeholder="Contraseña" required minlength="8">
+                        <div id="password-strength"></div>
                         <br>
                         <br>
                         <br>
@@ -58,10 +59,19 @@
 
                     <!-- Campos para restaurante -->
                     <div id="restaurante-fields" style="display: none;">
-                        <input type="number" name="nit" placeholder="NIT">
-                        <input type="text" name="nombre" placeholder="Nombre del Restaurante">
+                        <input type="number" name="nit" placeholder="NIT" required min="1">
+                        <input type="text" name="nombre" placeholder="Nombre del Restaurante" required>
+                        <br>
+                        <br>
+                        <label for="logo">Logo:</label>
+                        <br>
                         <input type="file" id="logo" name="logo" accept="image/*">
-                        <textarea name="descripcion" placeholder="Descripción"></textarea>
+                        <br>
+                        <br>
+                        <textarea name="descripcion" placeholder="Descripción" required maxlength="255"></textarea>
+                        <br>
+                        <br>
+                        <label for="logo">Categoria:</label>
                         <select name="categoria" required>
                             <option value="1">Comida rápida</option>
                             <option value="2">Cafetería</option>

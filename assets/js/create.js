@@ -64,7 +64,13 @@ form.addEventListener('submit', async (event) => {
 
     const formData = new FormData(form);
     const body = {};
-    formData.forEach((value, key) => (body[key] = value));
+    formData.forEach((value, key) => {
+        if (key === 'documento' || key === 'nit') {
+            body[key] = parseInt(value, 10);
+        } else {
+            body[key] = value;
+        }
+    });
 
     if (formData.get('logo') && tipoSelect.value === 'restaurante') {
         const logoFile = formData.get('logo');
@@ -205,3 +211,46 @@ document.getElementById('terms-link').addEventListener('click', (event) => {
 document.getElementById('closeTermsBtn').addEventListener('click', () => {
     document.getElementById('termsModal').style.display = 'none';
 });
+
+// Validación de contraseña
+document.getElementById('contrasena').addEventListener('input', function() {
+    const passwordField = document.getElementById('contrasena');
+    const passwordStrength = document.getElementById('password-strength');
+    if (passwordField.value.length > 0) {
+        const strength = getPasswordStrength(passwordField.value);
+        passwordStrength.textContent = `Nivel de seguridad: ${strength}`;
+        passwordStrength.style.color = getStrengthColor(strength);
+    } else {
+        passwordStrength.textContent = '';
+    }
+});
+
+document.getElementById('create-form').addEventListener('submit', function(event) {
+    const password = document.getElementById('contrasena').value;
+    const strength = getPasswordStrength(password);
+    if (strength !== 'Muy Fuerte') {
+        event.preventDefault();
+        document.getElementById('error-message').textContent = 'La contraseña debe tener letras mayúsculas, minúsculas, números y caracteres especiales.';
+    }
+});
+
+function getPasswordStrength(password) {
+    let strength = 0;
+    if (password.length >= 8) strength++;
+    if (/[A-ZÑÁÉÍÓÚÜ]/.test(password)) strength++;
+    if (/[a-zñáéíóúü]/.test(password)) strength++;
+    if (/[0-9]/.test(password)) strength++;
+    if (/[^A-Za-z0-9]/.test(password)) strength++;
+    return ['Muy Débil', 'Débil', 'Moderada', 'Fuerte', 'Muy Fuerte'][strength];
+}
+
+function getStrengthColor(strength) {
+    switch (strength) {
+        case 'Muy Débil': return 'red';
+        case 'Débil': return 'orange';
+        case 'Moderada': return 'orange';
+        case 'Fuerte': return 'lightgreen';
+        case 'Muy Fuerte': return 'green';
+        default: return 'black';
+    }
+}

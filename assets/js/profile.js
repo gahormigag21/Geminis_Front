@@ -33,17 +33,50 @@ const loadProfile = async () => {
 // Función para guardar cambios
 form.addEventListener('submit', async (event) => {
     event.preventDefault();
+
+    // Validar campos
+    const nombres = document.getElementById('nombres').value;
+    const apellido = document.getElementById('apellido').value;
+    const telefono = document.getElementById('telefono').value;
+    const direccion = document.getElementById('direccion').value;
+    const correo = document.getElementById('correo').value;
+    const contrasena = document.getElementById('contrasena').value;
+
+    if (!/^[A-Za-zñÑáéíóúÁÉÍÓÚ\s]+$/.test(nombres) || nombres.length > 100) {
+        alert('Nombres inválidos');
+        return;
+    }
+    if (!/^[A-Za-zñÑáéíóúÁÉÍÓÚ\s]+$/.test(apellido) || apellido.length > 100) {
+        alert('Apellido inválido');
+        return;
+    }
+    if (!/^\d{7,15}$/.test(telefono) || telefono.length > 15) {
+        alert('Teléfono inválido');
+        return;
+    }
+    if (direccion.length > 100) {
+        alert('Dirección inválida');
+        return;
+    }
+    if (!/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/.test(correo) || correo.length > 100) {
+        alert('Correo inválido');
+        return;
+    }
+    if (contrasena && contrasena.length < 8) {
+        alert('La contraseña debe tener al menos 8 caracteres');
+        return;
+    }
+
     const updatedUser = {
         Documento: document.getElementById('documento').value,
-        Nombres: document.getElementById('nombres').value,
-        Apellido: document.getElementById('apellido').value,
-        Telefono: document.getElementById('telefono').value,
-        Direccion: document.getElementById('direccion').value,
-        Correo: document.getElementById('correo').value,
+        Nombres: nombres,
+        Apellido: apellido,
+        Telefono: telefono,
+        Direccion: direccion,
+        Correo: correo,
         AutenticacionDosFactores: document.getElementById('autenticacionDosFactores').checked,
     };
 
-    const contrasena = document.getElementById('contrasena').value;
     if (contrasena) {
         updatedUser.Contrasena = contrasena;
     }
