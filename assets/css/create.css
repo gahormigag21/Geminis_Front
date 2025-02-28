@@ -40,6 +40,14 @@ form button:hover {
     background-color: #0056b3;
 }
 
+textarea {
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    min-height: 100px;
+}
+
 .modal {
     display: none;
     position: fixed;
