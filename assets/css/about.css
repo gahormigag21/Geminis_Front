@@ -229,15 +229,6 @@
         padding: 2em 2em 1em;
 
     }
-
-    .about-mission-vision .mision {
-        left: -12.5vw;
-    }
-
-    .about-mission-vision .vision {
-        left: 12.5vw;
-    }
-
     .about-mission-vision .mision h2,
     .about-mission-vision .vision h2 {
         margin-top: calc(.25em + 2vh);
@@ -260,7 +251,6 @@
         /* height: fit-content; */
         max-height: 100%;
         padding: 2em 0;
-        justify-content: inherit;
     }
 
     .about-mission-vision .mision-toggler,
@@ -284,11 +274,13 @@
     }
 
     .about-mission-vision .mision {
-        left: -1em;
+        left: -2em;
+        max-height: 245px;
     }
 
     .about-mission-vision .vision {
-        left: 1em;
+        left: 2em;
+        max-height: 245px;
     }
 
     .about-mission-vision .mision h2,
@@ -308,4 +300,19 @@
         max-width: 42%;
         padding: 2em 3em 3em;
     }
+}
+@media (min-width: 992px) and (max-width: 1200px) {
+   
+    .about-mission-vision .mision-toggler, .about-mission-vision .vision-toggler{
+        max-height: 300px;
+    }       
+.about-mission-vision .mision {
+    left: -3.5em;
+    max-height: 250px;
+}
+
+.about-mission-vision .vision {
+    left: 3.5em;
+    max-height: 250px;
+}
 }
