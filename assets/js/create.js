@@ -79,7 +79,7 @@ form.addEventListener('submit', async (event) => {
             const result = await response.json();
             if (result.success) {
                 body.UbicacionLogo = result.data.url;
-                await sendVerificationCode(body);
+                await sendFormData(body);
             } else {
                 alert('Failed to upload logo.');
             }
