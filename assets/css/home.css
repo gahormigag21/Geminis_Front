@@ -293,6 +293,18 @@
     position: relative;
 }
 
+#paymentStatusModal .modal-content {
+    background-color: var(--background-color);
+    margin: auto;
+    padding: 20px;
+    border: 1px solid var(--primary-color);
+    width: 80%;
+    max-width: 500px;
+    border-radius: 8px;
+    position: relative;
+    text-align: center;
+}
+
 .close-btn {
     color: var(--primary-color);
     float: right;

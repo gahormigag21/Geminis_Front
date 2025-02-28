@@ -130,8 +130,41 @@ const loadRestaurants = async () => {
 };
 
 document.addEventListener("DOMContentLoaded", async () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const unitPrice = urlParams.get('id');
+    const status = urlParams.get('status');
+    const title = urlParams.get('title');
+
+    if (unitPrice && status && title) {
+        showPaymentStatusModal(status, title);
+    }
+
     await loadRestaurants();
 });
+
+function showPaymentStatusModal(status, title) {
+    const modal = document.getElementById('paymentStatusModal');
+    const modalTitle = document.getElementById('payment-status-title');
+    const modalMessage = document.getElementById('payment-status-message');
+
+    if (status === 'success') {
+        modalTitle.innerText = 'Gracias por su compra';
+        modalMessage.innerText = `Gracias por comprar el plan ${title}, su cuenta se ha actualizado con nuevas funciones.`;
+    } else if (status === 'pending') {
+        modalTitle.innerText = 'Pago pendiente';
+        modalMessage.innerText = `El pago está pendiente. Su cuenta será actualizada una vez se confirme el pago.`;
+    } else if (status === 'failure') {
+        modalTitle.innerText = 'Error en el pago';
+        modalMessage.innerText = `Hubo un error con el pago. Puede reintentar o probar más tarde.`;
+    }
+
+    modal.style.display = 'flex';
+}
+
+function closePaymentStatusModal() {
+    const modal = document.getElementById('paymentStatusModal');
+    modal.style.display = 'none';
+}
 
 document.addEventListener("DOMContentLoaded", () => {
         function initOwlCarousel() {
