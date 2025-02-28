@@ -1,7 +1,7 @@
 // URL de configuración
 const configURL1 = {
-    baseUrl: 'http://localhost:3000'
-    //baseUrl: 'https://geminisback-production.up.railway.app'
+    //baseUrl: 'http://localhost:3000'
+    baseUrl: 'https://geminisback-production.up.railway.app'
 };
 
 // Cargar componentes comunes
@@ -205,17 +205,17 @@ function toggleCollapseMenu() {
     }
 }
 
-// Detectar cambios de tamaño de la ventana
-let lastWidth = window.innerWidth;
-let lastHeight = window.innerHeight;
+// // Detectar cambios de tamaño de la ventana
+// let lastWidth = window.innerWidth;
+// let lastHeight = window.innerHeight;
 
-window.addEventListener("resize", () => {
-    if (window.innerWidth !== lastWidth || window.innerHeight !== lastHeight) {
-        lastWidth = window.innerWidth;
-        lastHeight = window.innerHeight;
-        location.reload();
-    }
-});
+// window.addEventListener("resize", () => {
+//     if (window.innerWidth !== lastWidth || window.innerHeight !== lastHeight) {
+//         lastWidth = window.innerWidth;
+//         lastHeight = window.innerHeight;
+//         location.reload();
+//     }
+// });
 // Cargar Nav y Footer
 document.addEventListener("DOMContentLoaded", () => {
     loadComponent('nav', 'nav.html').then(() => {
