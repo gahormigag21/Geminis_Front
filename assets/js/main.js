@@ -76,6 +76,7 @@ const loadComponent = async (id, file) => {
                     });
                 }
             }
+
             if (!userToken) {
                 if (id === 'nav') {
                     // Activar al final
@@ -88,7 +89,6 @@ const loadComponent = async (id, file) => {
                     domi.style.display = "none";
                     reserva.style.display = "none";
                     logIn.style.display = "block";
-
                     // Seleccionar el li padre de domicilios y reservas y establecer display none
                     const domiParent = domi.closest('li');
                     const reservaParent = reserva.closest('li');
@@ -100,24 +100,43 @@ const loadComponent = async (id, file) => {
                     if (reservaParent) {
                         reservaParent.style.display = "none";
                     }
+                    if (window.innerWidth < 1100) {
+                        const nav = document.querySelector('.nav-menu');
+                        const collapseMenu = document.createElement('div');
+                        collapseMenu.id = 'collapseMenu';
+                        collapseMenu.className = 'dropdown-content';
+                        collapseMenu.innerHTML = `
+                            <li><a class="inicio" href="home.html">Inicio</a></li>
+                            <li><a class="restaurantes" href="verRestaurantes.html">Restaurantes</a></li>
+                            <li><a href="about.html">Nosotros</a></li>
+                        `;
+                        nav.appendChild(collapseMenu);
+                    }
+                    if (window.innerWidth < 992) {
 
-                    // Restablecer la variable al cargar la página en caso de que se haya recargado
-                    window.addEventListener('load', () => {
-                        sessionStorage.removeItem('reloaded');
-
-                        if (window.innerWidth < 992) {
-                            logIn.innerHTML = '<i class="fa-solid fa-right-to-bracket" style="color: #fdedef; font-size: 24px;"></i>';
-                        }
-                    });
-
-
-
+                        logIn.innerHTML = '<i class="fa-solid fa-right-to-bracket" style="color: #fdedef; font-size: 24px;"></i>';
+                    }
                 }
             } else {
 
                 const logInparent = document.querySelector(".login").closest('li');
                 if (logInparent) {
                     logInparent.style.display = "none";
+
+                }
+                if (window.innerWidth < 1100) {
+                    const nav = document.querySelector('.nav-menu');
+                    const collapseMenu = document.createElement('div');
+                    collapseMenu.id = 'collapseMenu';
+                    collapseMenu.className = 'dropdown-content';
+                    collapseMenu.innerHTML = `
+                        <li><a class="inicio" href="home.html">Inicio</a></li>
+                        <li><a class="restaurantes" href="verRestaurantes.html">Restaurantes</a></li>
+                        <li><a class="domicilios" href="domicilios.html" id="domicilios-link">Domicilios</a></li>
+                        <li><a class="reservas" href="reservasCliente.html" id="reservas-link">Reservas</a></li>
+                        <li><a href="about.html">Nosotros</a></li>
+                    `;
+                    nav.appendChild(collapseMenu);
                 }
             }
 
@@ -176,12 +195,13 @@ const handleNavShadow = () => {
     }
 };
 function toggleCollapseMenu() {
-
     const menu = document.querySelector('#collapseMenu');
-
-    if (window.innerWidth < 1200) {
-        menu.classList.toggle('show'); // Cambiar a toggle para alternar la visibilidad
-
+    if (menu) {
+        if (window.innerWidth < 1200) {
+            menu.classList.toggle('show'); // Cambiar a toggle para alternar la visibilidad
+        }
+    } else {
+        console.error('Collapse menu element not found');
     }
 }
 
