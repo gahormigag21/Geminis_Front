@@ -146,6 +146,18 @@
         </div>
     </div>
 
+    <div id="verificationModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeVerificationModal">&times;</span> <!-- Botón de cierre -->
+            <h2>Verificación de Correo</h2>
+            <p>Se ha enviado un código de verificación a su correo electrónico. Por favor, ingréselo a continuación:</p>
+            <input type="text" id="verificationCode" placeholder="Código de verificación">
+            <button type="button" id="verifyCodeBtn">Verificar</button>
+            <p id="verificationError" style="color: red;"></p>
+        </div>
+    </div>
+
     <script src="../assets/js/main.js"></script>
     <script src="../assets/js/create.js"></script>
 </body>
+</html>

@@ -12,7 +12,7 @@ form.addEventListener('submit', async (event) => {
     window.history.replaceState({}, document.title, window.location.pathname);
 
     try {
-        const verifyResponse = await fetch(`${configURL1.baseUrl}/api/auth/verify-code`, {
+        const verifyResponse = await fetch(`${configURL1.baseUrl}/api/auth/verify-code-forgot-password`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ code: codigo }),

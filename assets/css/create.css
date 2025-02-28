@@ -66,6 +66,23 @@ form button:hover {
     overflow-y: auto;
 }
 
+.modal-content .close {
+    position: absolute;
+    top: 38%;
+    right: 35%; /* Ajustar para que esté en la esquina superior derecha */
+    color: red; /* Cambiar el color a rojo */
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.modal-content .close:hover,
+.modal-content .close:focus {
+    color: darkred; /* Cambiar el color al pasar el cursor */
+    text-decoration: none;
+    cursor: pointer;
+}
+
 .terms-text {
     max-height: 300px;
     overflow-y: auto;

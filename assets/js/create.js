@@ -9,6 +9,17 @@ const esAdminSelect = document.getElementById('es-admin');
 const adminNitContainer = document.getElementById('admin-nit');
 const nitRestauranteSelect = document.getElementById('nit-restaurante');
 
+const verificationModal = document.getElementById('verificationModal');
+const verificationCodeInput = document.getElementById('verificationCode');
+const verifyCodeBtn = document.getElementById('verifyCodeBtn');
+const verificationError = document.getElementById('verificationError');
+
+const closeVerificationModal = document.getElementById('closeVerificationModal');
+
+closeVerificationModal.addEventListener('click', () => {
+    verificationModal.style.display = 'none';
+});
+
 // Mostrar/Ocultar campos según el tipo seleccionado
 tipoSelect.addEventListener('change', () => {
     if (tipoSelect.value === 'usuario') {
@@ -68,7 +79,7 @@ form.addEventListener('submit', async (event) => {
             const result = await response.json();
             if (result.success) {
                 body.UbicacionLogo = result.data.url;
-                await sendFormData(body);
+                await sendVerificationCode(body);
             } else {
                 alert('Failed to upload logo.');
             }
@@ -77,9 +88,47 @@ form.addEventListener('submit', async (event) => {
             alert('Error uploading logo.');
         }
     } else {
-        await sendFormData(body);
+        await sendVerificationCode(body);
     }
 });
+
+async function sendVerificationCode(body) {
+    try {
+        const response = await fetch(`${configURL1.baseUrl}/api/auth/send-verification-code`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ correo: body.correo }),
+        });
+
+        if (!response.ok) {
+            throw new Error('Error al enviar el código de verificación');
+        }
+
+        verificationModal.style.display = 'flex';
+        verifyCodeBtn.onclick = () => verifyCode(body);
+    } catch (error) {
+        errorMessage.textContent = error.message;
+    }
+}
+
+async function verifyCode(body) {
+    try {
+        const code = verificationCodeInput.value;
+        const response = await fetch(`${configURL1.baseUrl}/api/auth/verify-code`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ correo: body.correo, code }),
+        });
+
+        if (!response.ok) {
+            throw new Error('Código de verificación incorrecto');
+        }
+
+        await sendFormData(body);
+    } catch (error) {
+        verificationError.textContent = error.message;
+    }
+}
 
 async function sendFormData(body) {
     try {
