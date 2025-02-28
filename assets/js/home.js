@@ -167,64 +167,66 @@ function closePaymentStatusModal() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-        function initOwlCarousel() {
-            $(".carousel-container").owlCarousel("destroy"); // Destruir si ya está inicializado
-            $(".carousel-container").owlCarousel({
-                nav: true,
-                dots: false,
-                loop: true,
-                margin: 30,
-                stagePadding: 2,
-                center: false,
-                autoplay: false,
-                navText: ["<i class=\"fa-solid fa-chevron-left\"></i>", "<i class=\"fa-solid fa-chevron-right\"></i>"],
-                autoWidth: true,
-                responsive: {
-                    0: {
-                        items: 1,
-                        nav: false,
-                        dots: true
-                    },
-                    768: {
-                        items: 2.6,
-                        nav: true
-                    },
-                    992: {
-                        items: 3
-                    },
-                    1200: {
-                        items: 3.6
-                    }, 
-                    1400:{
-                        items: 4
-                    }
+    function initOwlCarousel() {
+        $(".carousel-container").owlCarousel("destroy"); // Destruir si ya está inicializado
+        $(".carousel-container").owlCarousel({
+            nav: true,
+            dots: false,
+            loop: true,
+            margin: 30,
+            stagePadding: 2,
+            center: false,
+            autoplay: false,
+            navText: ["<i class=\"fa-solid fa-chevron-left\"></i>", "<i class=\"fa-solid fa-chevron-right\"></i>"],
+            autoWidth: true,
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: false,
+                    dots: true,
+                    center: true
                 },
-                onInitialized: function () {
-                    limitOwlDots(6); // Límite de dots visibles
+                768: {
+                    items: 2.6,
+                    nav: true
                 },
-                onResized: function () {
-                    limitOwlDots(6);
-                     // Asegurar que el límite se mantenga al redimensionar
-
+                992: {
+                    items: 3
+                },
+                1200: {
+                    items: 3.6
+                },
+                1400: {
+                    items: 4
                 }
-            });
-        }
-
-        function limitOwlDots(maxDots) {
-            let dots = $(".carousel-container .owl-dots .owl-dot");
-            if (dots.length > maxDots) {
-                dots.hide().slice(0, maxDots).show(); // Oculta todos y solo muestra los primeros `maxDots`
             }
-        }
+            // ,
+            // onInitialized: function () {
+            //     limitOwlDots(5); // Límite de dots visibles
+            // },
+            // onResized: function () {
+            //     limitOwlDots(5);
+            //      // Asegurar que el límite se mantenga al redimensionar
 
-        window.initOwlCarousel = initOwlCarousel; // Make initOwlCarousel globally accessible
-
-        initOwlCarousel(); // Inicializar el carrusel al cargar la página
-
-        window.addEventListener('resize', function (){
-            initOwlCarousel(); // Reinicializar al cambiar el tamaño de la ventana
+            // }
         });
-    });
+    }
+
+    // function limitOwlDots(maxDots) {
+    //     let dots = $(".carousel-container .owl-dots .owl-dot");
+    //     if (dots.length > maxDots) {
+    //         dots.hide().slice(0, maxDots).show(); // Oculta todos y solo muestra los primeros `maxDots`
+    //     }
+    // }
+
+    window.initOwlCarousel = initOwlCarousel; // Make initOwlCarousel globally accessible
+
+    // initOwlCarousel(); // Inicializar el carrusel al cargar la página
+
+    // window.addEventListener('resize', function () {
+    //     initOwlCarousel(); // Reinicializar al cambiar el tamaño de la ventana
+    // });
+});
 
 
 function togglePricingPlans() {
@@ -266,7 +268,7 @@ function openModal(planType) {
     const modalDescription = document.getElementById("modal-description");
     const purchaseButton = document.getElementById("purchase-button");
     const termsContainer = document.getElementById("terms-container");
-    
+
     if (planType === "basic" || planType === "personal-basic") {
         purchaseButton.style.display = "none";
         termsContainer.style.display = "none";
@@ -280,7 +282,7 @@ function openModal(planType) {
         }
         termsContainer.style.display = "block";
     }
-    
+
     if (planType === "basic") {
         modalTitle.innerText = "Plan Básico";
         modalDescription.innerHTML = `
@@ -336,7 +338,7 @@ function openModal(planType) {
             </table>
         `;
     }
-    
+
     modal.style.display = "flex";
     purchaseButton.setAttribute("data-plan-type", planType);
 }
@@ -371,11 +373,11 @@ function purchasePlan() {
             email: email
         })
     })
-    .then(response => response.json())
-    .then(data => {
-        window.location.href = data.init_point; // Redirect to Mercado Pago link
-    })
-    .catch(error => console.error('Error creating preference:', error));
+        .then(response => response.json())
+        .then(data => {
+            window.location.href = data.init_point; // Redirect to Mercado Pago link
+        })
+        .catch(error => console.error('Error creating preference:', error));
 }
 
 function closeModal() {

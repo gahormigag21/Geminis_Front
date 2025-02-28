@@ -422,7 +422,9 @@
         border-radius: 50%;
         margin: 0 0.5em;
     }
-
+    .carousel-container .owl-dots .owl-dot.active{
+        background: var(--primary-color);
+    }
     .pricing-plans-section,
     .faq-section {
         margin: 0 .25em 3em;
