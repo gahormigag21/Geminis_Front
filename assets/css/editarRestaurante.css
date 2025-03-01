@@ -7,7 +7,7 @@
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     animation: fadeIn 0.5s ease-in-out;
-    min-height: 44.6vh;
+    min-height: 50vh;
 }
 
 .editarRestaurante-container h1 {
@@ -28,6 +28,7 @@
     margin: 0 auto 20px;
     max-width: 150px;
     height: auto;
+    border-radius: 50%;
 }
 
 .editarRestaurante-container .form-container {
