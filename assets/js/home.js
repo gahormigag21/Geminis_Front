@@ -86,23 +86,7 @@ const loadRestaurants = async () => {
             telefono: "321-654-0987",
             horario: "11:00 AM - 12:00 AM",
             categoria: 10
-        },
-        {
-            id: "401",
-            name: "Comida oriental",
-            logo: "../assets/images/logoRestaurante4.webp",
-            description: "Sabores auténticos del este asiático.",
-            distance: "1.1 km",
-            image: "../assets/images/restaurante4.jpg",
-            direccion: "Avenida 101, Ciudad",
-            mesasTotales: 30,
-            mesasDisponibles: 20,
-            reservasMaximas: 25,
-            telefono: "321-654-0987",
-            horario: "11:00 AM - 12:00 AM",
-            categoria: 10
         }
-
     ];
     const fetchedRestaurants = await fetchAndAddRestaurants();
     const restaurants = existingRestaurants.concat(fetchedRestaurants);

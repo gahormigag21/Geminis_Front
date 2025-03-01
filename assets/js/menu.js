@@ -147,7 +147,7 @@ const getRestaurantData = async () => {
                 ]
             },
             {
-                id: "300",
+                id: "600",
                 menu: [
                     { img: "../assets/images/img-pizza1.webp", nombre: "Spaghetti Bolognese", descripcion: "Espagueti con salsa de carne y tomate", precio: 49900, tipo: 1 },
                     { img: "../assets/images/img-pizza1.webp", nombre: "Fettuccine Alfredo", descripcion: "Pasta con salsa cremosa de queso y mantequilla", precio: 44900, tipo: 2 },

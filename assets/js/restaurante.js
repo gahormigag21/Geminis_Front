@@ -112,16 +112,30 @@ const getRestaurantData = async () => {
         <h1>${restaurant.name}</h1>
         <img class="restaurant-logo" src="${restaurant.logo}" alt="logotipo de ${restaurant.name}">
         <p class="descripcion">${restaurant.description}</p>  
-        <img class="restaurant-img" src="${restaurant.image}" alt="Imagen de ${restaurant.name}">
+        <div class="carousel">
+            <div class="carousel-inner">
+                ${restaurant.id === "1" ? `
+                    <img class="carousel-item active" src="${restaurant.image}" alt="Imagen de ${restaurant.name}">
+                    <img class="carousel-item" src="../assets/images/restaurante.jpg" alt="Imagen de ${restaurant.name}">
+                    <img class="carousel-item" src="../assets/images/restaurante2.jpg" alt="Imagen de ${restaurant.name}">
+                ` : `
+                    <img class="carousel-item active" src="${restaurant.image}" alt="Imagen de ${restaurant.name}">
+                `}
+            </div>
+            <button class="carousel-control prev" onclick="prevSlide()">&#10094;</button>
+            <button class="carousel-control next" onclick="nextSlide()">&#10095;</button>
+        </div>
         <p class="distancia">Dirección: ${restaurant.direccion}</p>
         <p class="telefono">Teléfono: ${restaurant.telefono}</p>
 
         <!-- Contenedor para los botones -->
+        ${restaurant.id === "1" ? `
         <div class="button-container">
             <a href="menu.html?id=${restaurant.id}" class="primary-btn">Ver Menú</a>
             ${showButtons ? `<a href="CrearDomicilio.html?id=${restaurant.id}" class="primary-btn">Domicilio</a>` : '<p class="login-message">Debe iniciar sesión para realizar un domicilio</p>'}
             ${showButtons ? `<a href="reservas.html?id=${restaurant.id}" class="primary-btn">Reservar</a>` : '<p class="login-message">Debe iniciar sesión para reservar</p>'}
         </div>
+        ` : ''}
     `;
 };
 
