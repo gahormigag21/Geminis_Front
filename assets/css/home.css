@@ -123,6 +123,12 @@
     margin: 0.75em;
 }
 
+.restaurant-description {
+    max-height: 100px;
+    overflow-y: auto;
+    margin-bottom: 1em;
+}
+
 .pricing-plan-btn-container {
     display: table;
     width: 100%;

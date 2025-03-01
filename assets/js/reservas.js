@@ -124,24 +124,32 @@ const getRestaurantData = async () => {
     const currentHour = new Date();
     currentHour.setMinutes(currentHour.getMinutes() + 30); // Set to 30 minutes ahead
 
-    const selectedDate = new Date(fechaInput.value);
-    const dayOfWeek = selectedDate.toLocaleDateString('es-ES', { weekday: 'long' });
-    const restaurantSchedule = JSON.parse(restaurant.horario).find(day => day.day.toLowerCase() === dayOfWeek.toLowerCase());
+    const updateHoraReservaConstraints = () => {
+        const selectedDate = new Date(fechaInput.value);
+        const dayOfWeek = selectedDate.toLocaleDateString('es-ES', { weekday: 'long' });
+        const restaurantSchedule = JSON.parse(restaurant.horario).find(day => day.day.toLowerCase() === dayOfWeek.toLowerCase());
 
-    if (selectedDate.toDateString() === new Date().toDateString()) {
-        // If reservation is for today, set min to 30 minutes ahead
-        horadereservaInput.value = currentHour.toTimeString().split(' ')[0].substring(0, 5);
-        horadereservaInput.min = currentHour.toTimeString().split(' ')[0].substring(0, 5);
-    } else if (restaurantSchedule) {
-        // If reservation is for a future date, set min to the restaurant's opening time
-        horadereservaInput.min = restaurantSchedule.startTime;
-    }
+        if (selectedDate.toDateString() === new Date().toDateString()) {
+            // If reservation is for today, set min to 30 minutes ahead
+            horadereservaInput.value = currentHour.toTimeString().split(' ')[0].substring(0, 5);
+            horadereservaInput.min = currentHour.toTimeString().split(' ')[0].substring(0, 5);
+        } else if (restaurantSchedule) {
+            // If reservation is for a future date, set min to the restaurant's opening time
+            horadereservaInput.min = restaurantSchedule.startTime;
+        }
 
-    if (restaurantSchedule) {
-        const closingTime = new Date(`1970-01-01T${restaurantSchedule.endTime}:00`);
-        closingTime.setMinutes(closingTime.getMinutes() - 30);
-        horadereservaInput.max = closingTime.toTimeString().split(' ')[0].substring(0, 5);
-    }
+        if (restaurantSchedule) {
+            const closingTime = new Date(`1970-01-01T${restaurantSchedule.endTime}:00`);
+            closingTime.setMinutes(closingTime.getMinutes() - 30);
+            horadereservaInput.max = closingTime.toTimeString().split(' ')[0].substring(0, 5);
+        }
+    };
+
+    // Update constraints when the date changes
+    fechaInput.addEventListener('change', updateHoraReservaConstraints);
+
+    // Initial call to set constraints based on the current date
+    updateHoraReservaConstraints();
 };
 
 const populateUserData = async () => {

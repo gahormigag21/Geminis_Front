@@ -117,7 +117,9 @@ const loadRestaurants = async () => {
             <img class="restaurant-img" src="${restaurant.image}" alt="${restaurant.name}">
             <div class="restaurant-info">
                 <h3>${restaurant.name}</h3>
-                <p>${restaurant.description}</p>
+                <div class="restaurant-description">
+                    <p>${restaurant.description}</p>
+                </div>
                 <p>Dirección: ${restaurant.direccion}</p>
                 <a href="restaurant.html?id=${restaurant.id}" class="primary-btn">Ver Restaurante</a>
             </div>
