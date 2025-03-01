@@ -171,23 +171,23 @@ esAdminSelect.addEventListener('change', () => {
     }
 });
 
-// Cargar NITs de restaurantes desde el backend
-const cargarNITsRestaurantes = async () => {
+// Cargar nombres de restaurantes desde el backend
+const cargarNombresRestaurantes = async () => {
     try {
         const token = localStorage.getItem('token');
-        const response = await fetch(`${configURL1.baseUrl}/api/restaurantes/nits`, {
+        const response = await fetch(`${configURL1.baseUrl}/api/restaurantes/nombres`, {
             headers: { 'Authorization': `Bearer ${token}` }
         });
         if (!response.ok) {
-            throw new Error('Error al cargar NITs de restaurantes');
+            throw new Error('Error al cargar nombres de restaurantes');
         }
 
-        const nits = await response.json();
-        nitRestauranteSelect.innerHTML = '<option value="">Seleccione un NIT</option>';
-        nits.forEach(nit => {
+        const restaurantes = await response.json();
+        nitRestauranteSelect.innerHTML = '<option value="">Seleccione un restaurante</option>';
+        restaurantes.forEach(restaurante => {
             const option = document.createElement('option');
-            option.value = nit;
-            option.textContent = nit;
+            option.value = restaurante.nit;
+            option.textContent = restaurante.nombre;
             nitRestauranteSelect.appendChild(option);
         });
     } catch (error) {
@@ -195,8 +195,8 @@ const cargarNITsRestaurantes = async () => {
     }
 };
 
-// Llamar a cargarNITsRestaurantes al cargar la página
-window.addEventListener('DOMContentLoaded', cargarNITsRestaurantes);
+// Llamar a cargarNombresRestaurantes al cargar la página
+window.addEventListener('DOMContentLoaded', cargarNombresRestaurantes);
 
 document.getElementById('terms-link').addEventListener('click', (event) => {
     event.preventDefault();
