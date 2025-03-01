@@ -269,6 +269,11 @@ function closeModal() {
     modal.style.display = "none";
     alert('Horario guardado exitosamente');
 }
+function closeModalx() {
+    const modal = document.querySelector(".modal");
+    modal.style.display = "none";
+
+}
 // Agregar horario dinamico
 document.addEventListener("DOMContentLoaded", function () {
     // Get all day checkboxes and other elements
