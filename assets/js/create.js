@@ -223,7 +223,7 @@ document.getElementById('contrasena').addEventListener('input', function() {
 document.getElementById('create-form').addEventListener('submit', function(event) {
     const password = document.getElementById('contrasena').value;
     const strength = getPasswordStrength(password);
-    if (strength !== 'Muy Fuerte') {
+    if (strength !== 'Muy Fuerte' && tipoSelect.value === 'usuario') {
         event.preventDefault();
         document.getElementById('error-message').textContent = 'La contraseña debe tener letras mayúsculas, minúsculas, números y caracteres especiales.';
     }

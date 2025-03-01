@@ -125,14 +125,13 @@
 }
 
 .carousel-control {
-
     position: absolute;
     top: 50%;
     background-color: rgba(0, 0, 0, 0.5)!important;
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
+    color: white!important;
+    border: none!important;
+    padding: 10px!important;
+    cursor: pointer!important;
     z-index: 1;
 }
 

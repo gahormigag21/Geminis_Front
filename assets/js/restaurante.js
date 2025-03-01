@@ -122,20 +122,20 @@ const getRestaurantData = async () => {
                     <img class="carousel-item active" src="${restaurant.image}" alt="Imagen de ${restaurant.name}">
                 `}
             </div>
-            <button class="carousel-control prev" onclick="prevSlide()">&#10094;</button>
-            <button class="carousel-control next" onclick="nextSlide()">&#10095;</button>
+            ${restaurant.id === "1" ? `
+                <button class="carousel-control prev" onclick="prevSlide()">&#10094;</button>
+                <button class="carousel-control next" onclick="nextSlide()">&#10095;</button>
+            ` : ''}
         </div>
         <p class="distancia">Dirección: ${restaurant.direccion}</p>
         <p class="telefono">Teléfono: ${restaurant.telefono}</p>
 
         <!-- Contenedor para los botones -->
-        ${restaurant.id === "1" ? `
         <div class="button-container">
             <a href="menu.html?id=${restaurant.id}" class="primary-btn">Ver Menú</a>
             ${showButtons ? `<a href="CrearDomicilio.html?id=${restaurant.id}" class="primary-btn">Domicilio</a>` : '<p class="login-message">Debe iniciar sesión para realizar un domicilio</p>'}
             ${showButtons ? `<a href="reservas.html?id=${restaurant.id}" class="primary-btn">Reservar</a>` : '<p class="login-message">Debe iniciar sesión para reservar</p>'}
         </div>
-        ` : ''}
     `;
 };
 

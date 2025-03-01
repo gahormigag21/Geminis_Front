@@ -118,7 +118,7 @@ const renderDomicilios = (domicilios) => {
     document.querySelectorAll('.priamry-btn').forEach(button => {
         button.addEventListener('click', (event) => {
             const domicilioId = event.target.getAttribute('data-domicilio-id');
-            window.location.href = `detalleDomicilio.html?id=${domicilioId}`; // Redirigir a la pantalla de detalles
+            window.location.href = `DetalleDomicilio.html?id=${domicilioId}`; // Redirigir a la pantalla de detalles
         });
     });
 };
