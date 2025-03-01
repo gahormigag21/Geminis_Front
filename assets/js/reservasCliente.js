@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 const currentTime = new Date();
                 const timeDifference = (reservationTime - currentTime) / (1000 * 60); // Difference in minutes
 
-                if (timeDifference < 20) {
+                if (timeDifference < 60) {
                     alert('Ya no es posible cancelar la reserva');
                 } else {
                     const confirmCancel = confirm('¿Está seguro que desea cancelar esta reserva?');
