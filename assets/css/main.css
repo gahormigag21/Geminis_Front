@@ -324,6 +324,7 @@ footer {
     background: rgba(20, 2, 4, 0.8);
     align-items: center;
     justify-content: center;
+    z-index: 2000;
 }
 
 .modal-content {
