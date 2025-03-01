@@ -430,6 +430,9 @@ footer {
     nav {
         justify-content: center;
     }
+    #collapseMenu.dropdown-content{
+        top: 200px;
+    }
 }
 
 @media (max-width: 1199.98px) {

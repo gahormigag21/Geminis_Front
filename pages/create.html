@@ -36,7 +36,7 @@
                         <input type="number" name="documento" placeholder="Documento" required minlength="7">
                         <input type="text" name="nombres" placeholder="Nombres" required pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ\s]+">
                         <input type="text" name="apellido" placeholder="Apellidos" required pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ\s]+">
-                        <input type="email" name="correo" placeholder="Correo" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+                        <input type="email" name="correo" placeholder="Correo" required>
                         <input type="text" name="telefono" placeholder="Teléfono" required pattern="\d{7,15}">
                         <input type="text" name="direccion" placeholder="Dirección" required>
                         <input type="password" name="contrasena" id="contrasena" placeholder="Contraseña" required minlength="8">
@@ -59,8 +59,8 @@
 
                     <!-- Campos para restaurante -->
                     <div id="restaurante-fields" style="display: none;">
-                        <input type="number" name="nit" placeholder="NIT" required min="1">
-                        <input type="text" name="nombre" placeholder="Nombre del Restaurante" required>
+                        <input type="number" name="nit" placeholder="NIT" min="1" maxlength="15">
+                        <input type="text" name="nombre" placeholder="Nombre del Restaurante">
                         <br>
                         <br>
                         <label for="logo">Logo:</label>
@@ -68,7 +68,7 @@
                         <input type="file" id="logo" name="logo" accept="image/*">
                         <br>
                         <br>
-                        <textarea name="descripcion" placeholder="Descripción" required maxlength="255"></textarea>
+                        <textarea name="descripcion" placeholder="Descripción" maxlength="255"></textarea>
                         <br>
                         <br>
                         <label for="logo">Categoria:</label>
@@ -169,5 +169,5 @@
 
     <script src="../assets/js/main.js"></script>
     <script src="../assets/js/create.js"></script>
-</body>
+    </body>
 </html>

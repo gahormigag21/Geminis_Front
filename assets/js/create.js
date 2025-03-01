@@ -36,13 +36,7 @@ tipoSelect.addEventListener('change', () => {
 
         // Activar campos de restaurante
         usuarioFields.querySelectorAll('input').forEach(input => input.required = false);
-        restauranteFields.querySelectorAll('input, textarea, select').forEach(input => {
-            if (input.id === 'descripcion') {
-                input.required = true;
-            } else {
-                input.required = true;
-            }
-        });
+        restauranteFields.querySelectorAll('input, textarea, select').forEach(input => input.required = true);
     }
 });
 
@@ -149,6 +143,7 @@ async function sendFormData(body) {
         });
 
         if (!response.ok) {
+            console.log(response.error);
             throw new Error('Error al crear usuario o restaurante');
         }
 
@@ -241,7 +236,7 @@ function getPasswordStrength(password) {
     if (/[a-zñáéíóúü]/.test(password)) strength++;
     if (/[0-9]/.test(password)) strength++;
     if (/[^A-Za-z0-9]/.test(password)) strength++;
-    return ['Muy Débil', 'Débil', 'Moderada', 'Fuerte', 'Muy Fuerte'][strength];
+    return ['Muy Débil', 'Débil', 'Moderada', 'Fuerte', 'Muy Fuerte','Muy Fuerte'][strength];
 }
 
 function getStrengthColor(strength) {
