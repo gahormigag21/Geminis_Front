@@ -4,7 +4,7 @@
     display: flex;
     justify-content: space-between;
     gap: 2em;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     padding: 5em 0;
 }
 /* Estilo general para el contenedor del formulario */
@@ -142,7 +142,10 @@
     .create-domicilio-form {
         padding: 1.5em;
     }
+    .domicilio-additional-info .btn-primary {
+        min-width: 100%;
 
+    }
     .menu-card {
         width: 100%; /* Una columna en pantallas pequeñas */
     }
