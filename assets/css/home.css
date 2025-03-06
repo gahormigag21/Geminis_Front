@@ -7,7 +7,9 @@
     margin-bottom: 20px;
     animation: slideIn 1s ease-out;
 }
-
+.parrafo-intro{
+    font-size: 1.4em;
+}
 #restaurants-section h1 {
     text-align: center;
     padding-top: 1em;
